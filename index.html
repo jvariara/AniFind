@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/c8e4d183c2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js" defer></script>
+    <title>AniFind</title>
+  </head>
+  <body>
+    <section id="landing-page">
+      <nav>
+        <div class="nav__container">
+          <div class="nav__logo">
+            <h1 class="logo"><span class="logo-text">AniFind</span></h1>
+          </div>
+          <ul class="nav__link--list">
+            <li class="nav__link">
+              <a
+                href="index.html"
+                class="nav__link--anchor nav__link--anchor-black link__hover-effect link__hover-effect--black"
+                >Home</a
+              >
+            </li>
+            <li class="nav__link">
+              <a
+                href="/html/findyouranime.html"
+                class="nav__link--anchor nav__link--anchor-black link__hover-effect link__hover-effect--black"
+                >Find Your Anime</a
+              >
+            </li>
+            <li class="nav__link">
+              <a
+                href="#"
+                class="nav__link--anchor nav__link--anchor-black nav__link--primary no-click"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <header>
+        <div class="header__container">
+          <div class="header__content">
+            <h1 class="header__title">Find your new favorite anime series</h1>
+            <h2 class="header__sub-title">
+              With the help of <span class="logo-text">anifind</span>
+            </h2>
+            <form class="header__input--container">
+              <input
+                type="text"
+                class="header__input"
+                id="search"
+                placeholder="Search by Anime"
+                onchange="storeSearchElem(event)"
+              />
+              <button class="btn__primary click" onclick="searchAnime()">
+                Search
+              </button>
+            </form>
+          </div>
+          <figure class="header__img--container">
+            <img
+              class="header__img"
+              src="./assets/undraw_home_cinema_l7yl.svg"
+              alt=""
+            />
+          </figure>
+        </div>
+      </header>
+    </section>
+  </body>
+</html>
