@@ -1,5 +1,6 @@
-function storeSearchElem(event) {
-  const animeSearch = event.target.value;
-  localStorage.setItem("anime", animeSearch);
-  window.location.href = `${window.location.origin}/html/findyouranime.html`;
+const searchValue = document.getElementById("search");
+
+function storeAnime() {
+  localStorage.setItem("anime", searchValue.value);
+  window.location.href = `${window.location.origin}/findyouranime.html`;
 }

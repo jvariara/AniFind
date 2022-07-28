@@ -15,12 +15,12 @@
  */
 let animeData;
 let animeList;
+const searchValue = document.getElementById('search')
 
-function storeSearchElem(event) {
-  const animeSearch = event.target.value;
-  localStorage.setItem("anime", animeSearch);
+function storeAnime() {
+  localStorage.setItem("anime", searchValue.value);
+  searchAnime();
 }
-
 
 async function searchAnime(filter) {
     const animeWrapper = document.querySelector(".animes")
@@ -47,7 +47,7 @@ function filterAnime(event) {
   searchAnime(event.target.value);
 }
 
-searchAnime();
+searchAnime()
 
 function animeHTML(anime) {
   return `<div class="anime">
