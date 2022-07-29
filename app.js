@@ -28,7 +28,7 @@ async function searchAnime(filter) {
     animeWrapper.classList += ' anime__loading'
     if (!animeData) {
         animeData = await getAnimeData();
-        animeList = animeData.data.slice(0, 6);
+        animeList = animeData.data;
     }
     animeWrapper.classList.remove('anime__loading')
     if (filter === 'HIGH_TO_LOW') {
