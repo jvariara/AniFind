@@ -1,6 +1,5 @@
 const searchValue = document.getElementById("search");
 const currWindow = window.location.href
-console.log(currWindow)
 
 function storeAnime() {
   localStorage.setItem("anime", searchValue.value);
