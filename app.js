@@ -49,36 +49,42 @@ function filterAnime(event) {
 function getAnimeId(event) {
   const animeTitle = event.target.innerHTML;
   localStorage.setItem("animeTitle", animeTitle);
-  window.location.href = `${window.location.origin}/html/description.html`;
+  window.location.href = `${window.location.origin}/anifind/html/description.html`;
 }
 
 async function loadAnimeDescription() {
   const descriptionWrapper = document.querySelector(".description__container");
 
-  animeDesc = await getAnimeDescription();
-  animeDescData = animeDesc.data;
-
+  if (!animeDesc){
+    animeDesc = await getAnimeDescription();
+    animeDescData = animeDesc.data;
+  }
+  
   descriptionWrapper.innerHTML = descriptionHTML(animeDescData);
   document.getElementById(
     "background__overlay"
-  ).style.backgroundImage = `url(${animeDescData.attributes.coverImage.original})`;
+    ).style.backgroundImage = `url(${animeDescData.attributes.coverImage.original})`;
 }
 
 async function loadCharacterData() {
+  await loadAnimeDescription();
+
   const characterWrapper = document.querySelector(".description__characters");
 
-  charsData = await getCharactersData();
-  charsList = charsData.data.slice(0, 6);
+  if (!charsData) {
+    charsData = await getCharactersData();
+    charsList = charsData.data.slice(0, 6);
+  }
+  
 
   for (let i = 0; i < charsList.length; i++) {
     charList = await getCharacter(charsList[i].id);
     charArray.push(charList.data);
   }
-
-  characterWrapper.innerHTML = charArray.map(elem => characterHTML(elem));
+  
+  characterWrapper.innerHTML = charArray.map(elem => characterHTML(elem)).join("");
 }
 
-loadAnimeDescription();
 loadCharacterData();
 searchAnime();
 
@@ -145,7 +151,7 @@ function descriptionHTML(anime) {
 function characterHTML(character) {
   return `<div class="description__character">
   <figure class="character__img--wrapper">
-      <img src="${character.attributes.image.original || character.attributes.image.medium || character.attributes.image.large}" alt="${
+      <img src="${getImage(character)}" alt="${
     character.attributes.names.en || character.attributes.canonicalName
   }" class="character__img">
   </figure>
@@ -153,6 +159,14 @@ function characterHTML(character) {
     character.attributes.names.en || character.attributes.canonicalName
   }</h2>
 </div>`;
+}
+
+function getImage(characterImg) {
+  if (!characterImg) {
+    return
+  }
+  let img = characterImg.attributes.image.original
+  return img
 }
 
 async function getAnimeData() {
