@@ -415,9 +415,7 @@ img {
   transform: scale(1.06);
 }
 
-.anime:hover .anime__title,
-.anime:hover #anime__rating,
-.anime:hover #anime__popularity {
+.anime:hover .anime__title {
   color: var(--pink-color);
 }
 
@@ -459,7 +457,7 @@ img {
 }
 
 #anime__description--header #background__overlay {
-  background-image: url("https://media.kitsu.io/anime/cover_images/7442/original.png");
+  /* background-image: url("https://media.kitsu.io/anime/cover_images/7442/original.png"); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

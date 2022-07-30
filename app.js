@@ -52,9 +52,8 @@ function getAnimeId(event) {
   window.location.href = `${window.location.origin}/anifind/html/description.html`;
 }
 
+const descriptionWrapper = document.querySelector(".description__container");
 async function loadAnimeDescription() {
-  const descriptionWrapper = document.querySelector(".description__container");
-
   if (!animeDesc){
     animeDesc = await getAnimeDescription();
     animeDescData = animeDesc.data;
@@ -67,20 +66,19 @@ async function loadAnimeDescription() {
 }
 
 async function loadCharacterData() {
+  descriptionWrapper.classList += " anime__loading";
   await loadAnimeDescription();
-
   const characterWrapper = document.querySelector(".description__characters");
-
   if (!charsData) {
     charsData = await getCharactersData();
     charsList = charsData.data.slice(0, 6);
+    
+    for (let i = 0; i < charsList.length; i++) {
+      charList = await getCharacter(charsList[i].id);
+      charArray.push(charList.data);
+    }
   }
-  
-
-  for (let i = 0; i < charsList.length; i++) {
-    charList = await getCharacter(charsList[i].id);
-    charArray.push(charList.data);
-  }
+  descriptionWrapper.classList.remove("anime__loading");
   
   characterWrapper.innerHTML = charArray.map(elem => characterHTML(elem)).join("");
 }
@@ -112,8 +110,7 @@ function animeHTML(anime) {
 }
 
 function descriptionHTML(anime) {
-  return `<div class="description__container">
-  <figure class="description__poster--wrapper">
+  return `<figure class="description__poster--wrapper">
     <img
       src="${anime.attributes.posterImage.original}"
       alt=""
@@ -144,8 +141,7 @@ function descriptionHTML(anime) {
       <div class="description__characters--container">
           <h1 class="description__characters--title">Characters:</h1>
           <div class="description__characters"></div>
-    </div>
-  </div>`;
+    </div>`;
 }
 
 function characterHTML(character) {
