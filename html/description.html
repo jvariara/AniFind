@@ -39,6 +39,25 @@
                 >Contact</a
               >
             </li>
+            <button class="btn__menu" onclick="toggleMenu()">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="menu__backdrop">
+              <button class="btn__menu btn__menu--close" onclick="toggleMenu()">
+                <i class="fas fa-times"></i>
+              </button>
+              <ul class="menu__links">
+                <li class="menu__list">
+                  <a href="../index.html" class="menu__link link__hover-effect link__hover-effect--white" onclick="toggleMenu()">Home</a>
+                </li>
+                <li class="menu__list">
+                  <a href="/anifind/html/findyouranime.html" class="menu__link link__hover-effect link__hover-effect--white" onclick="toggleMenu()">Find Your Anime</a>
+                </li>
+                <li class="menu__list">
+                  <a href="#" class="menu__link no-click link__hover-effect link__hover-effect--white" onclick="toggleMenu()">Contact</a>
+                </li>
+              </ul>
+            </div>
           </ul>
         </div>
       </nav>

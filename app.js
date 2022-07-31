@@ -10,6 +10,22 @@ let charArray = [];
 
 const searchValue = document.getElementById("search");
 
+let isMenuOpen = false;
+
+function toggleMenu() {
+  if(isMenuOpen) {
+    isMenuOpen = false;
+    return document.body.classList.remove("menu--open");
+  }
+  isMenuOpen = true
+  document.body.classList += " menu--open";
+}
+
+function storeIndexAnime() {
+  localStorage.setItem("anime", searchValue.value);
+  window.location.href = `${window.location.origin}/anifind/html/findyouranime.html`;
+}
+
 function storeAnime() {
   localStorage.setItem("anime", searchValue.value);
   searchAnime();

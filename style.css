@@ -181,6 +181,71 @@ nav {
   text-transform: lowercase;
 }
 
+/* HAMBURGER MENU */
+.btn__menu {
+  background-color: transparent;
+  font-size: 40px;
+  text-align: center;
+  border: none;
+  color: var(--blue-color);
+  display: none;
+}
+
+.menu__backdrop {
+  position: absolute;
+  background-color: var(--blue-color);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 300ms ease;
+}
+
+.menu--open .menu__backdrop {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu--open #find-anime,
+.menu--open #anime__description--header {
+  height: 100vh;
+  z-index: 50;
+}
+
+.menu--open {
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+
+.menu__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu__list {
+  padding: 32px 0;
+}
+
+.menu__link {
+  font-size: 40px;
+  color: #fff;
+}
+
+.btn__menu--close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  padding: 8px;
+  color: #fff;
+}
+
 #landing-page header {
   height: calc(100vh - 80px);
 }
@@ -282,13 +347,13 @@ nav {
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
-  z-index: 10;
+  z-index: 5;
 }
 
 .search__title {
   font-size: 48px;
   margin: 24px 0;
-  z-index: 10;
+  z-index: 5;
   color: var(--light-color);
 }
 
@@ -297,7 +362,7 @@ nav {
 }
 
 #find-anime .header__input--container {
-  z-index: 10;
+  z-index: 5;
 }
 
 #background__overlay {
@@ -327,6 +392,7 @@ nav {
 .anime__header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 select {
@@ -470,6 +536,11 @@ img {
   z-index: 1;
 }
 
+#find-anime .btn__menu,
+#anime__description--header .btn__menu {
+  color: var(--light-color);
+}
+
 #anime__description--body {
   color: var(--blue-color);
 }
@@ -481,7 +552,7 @@ img {
 .description__content--container {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 80%;
 }
 
 .description__header--container {
@@ -555,4 +626,90 @@ img {
 
 .description__description--para {
   font-size: 14px;
+}
+
+/* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
+@media (max-width: 768px) {
+  .nav__container {
+    margin: 0 16px;
+  }
+  .header__title {
+    font-size: 44px;
+  }
+  .header__sub-title {
+    font-size: 24px;
+  }
+  .header__input {
+    font-size: 20px;
+  }
+  .btn__primary {
+    font-size: 20px;
+  }
+  .search__container,
+  .row {
+    max-width: 600px;
+  }
+  .description__container {
+    flex-direction: column;
+  }
+  .description__poster--wrapper {
+    width: 80%;
+    margin: 0;
+  }
+
+  #anime__description--body h1 {
+    font-size: 20px;
+  }
+  .container {
+    padding: 40px 0;
+  }
+}
+
+/* SMALL PHONES */
+@media (max-width: 550px) {
+  .btn__menu {
+    display: block;
+  }
+  .nav__link {
+    display: none;
+  }
+  .header__container {
+    max-width: 300px;
+  }
+  .btn__primary {
+    position: static;
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px 24px;
+    border: 1px solid var(--dark-color);
+  }
+  .search__container,
+  .row {
+    max-width: 500px;
+    padding: 0;
+  }
+  .search__title {
+    font-size: 24px;
+  }
+  .header__input {
+    padding: 10px 24px;
+    font-size: 16px;
+  }
+  .section__title {
+    font-size: 16px;
+    justify-content: center;
+  }
+
+  .anime__title {
+    font-size: 18px;
+  }
+
+  #anime__popularity,
+  #anime__rating {
+    font-size: 12px;
+  }
+  .anime {
+    flex-direction: column;
+    width: 100%;
+  }
 }
