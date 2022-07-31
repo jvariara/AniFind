@@ -569,7 +569,6 @@ img {
 .description__characters {
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
 }
 
 .description__character {
@@ -651,6 +650,7 @@ img {
   }
   .description__container {
     flex-direction: column;
+    align-items: center;
   }
   .description__poster--wrapper {
     width: 80%;
@@ -662,6 +662,9 @@ img {
   }
   .container {
     padding: 40px 0;
+  }
+  .description__character {
+    width: calc(100% / 2);
   }
 }
 
@@ -711,5 +714,8 @@ img {
   .anime {
     flex-direction: column;
     width: 100%;
+  }
+  .description__character {
+    width: 100%
   }
 }
